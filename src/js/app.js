@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 
-var socket = io('http://boringboard.herokuapp.com');
+var socket = io( window.location.host );
 var React = require('react/addons');
 
 socket.on('connect', function(){

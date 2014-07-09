@@ -5,18 +5,25 @@ var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 var fs = require('fs');
 var path = require('path');
+var ejs = require('ejs');
 
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
 });
 
-app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/src/views');
+app.engine('html', ejs.renderFile);
 
-var queue = ['http://exmoorpet.com/wp-content/uploads/2012/08/cat.png'];
+app.use(express.static(__dirname + '/public'));
+app.use(function(req, res){
+    res.render('index.html');
+});
+
+var queue = ['http://placekitten.com/500/500'];
 
 function changeImage(image){
     io.sockets.emit('image:change', image);
-    // settings.image = image;
 }
 
 io.on('connection', function(socket){
