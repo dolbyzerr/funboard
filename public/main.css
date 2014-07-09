@@ -1,0 +1,48 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    -webkit-perspective: 500px;
+    -webkit-transform-origin: center center;
+}
+.image{
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transition: all .5s ease-out;
+}
+.image img{
+    visibility: hidden;
+}
+.funboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: white;
+    overflow: hidden;
+}
+.funboard:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+    -webkit-transition: all 1s ease-out;
+}
+.funboard_dragenter:after{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+}
+.funboard_dragenter .image{
+    -webkit-transform: translate3d(0,0,-100px);
+}
