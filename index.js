@@ -20,10 +20,12 @@ app.use(function(req, res){
     res.render('index.html');
 });
 
-var queue = ['http://placekitten.com/500/500'];
+var queue = [];
+var currentImage = 'http://placekitten.com/500/500';
 
 function changeImage(image){
     io.sockets.emit('image:change', image);
+    currentImage = image;
 }
 
 io.on('connection', function(socket){
@@ -39,6 +41,8 @@ io.on('connection', function(socket){
             queue.push('/images/' + options.name);
         });
     });
+
+    changeImage(currentImage);
 
     setInterval(function(){
         if(queue.length){
