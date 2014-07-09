@@ -19063,7 +19063,7 @@ module.exports = warning;
 },{"./emptyFunction":111,"oMfpAn":1}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 
-var socket = io('http://localhost');
+var socket = io( window.location.host );
 var React = require('react/addons');
 
 socket.on('connect', function(){
