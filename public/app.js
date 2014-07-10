@@ -19087,20 +19087,30 @@ var ImageView = React.createClass({displayName: 'ImageView',
 
 var FunBoard = React.createClass({displayName: 'FunBoard',
     getInitialState: function(){
-        return {imageURL: ""};
+        return {imageURL: "", loading: false};
     },
     componentWillMount: function(){
-        socket.on('image:change', this.changeImage);
+        socket.on('image:change', this.preloadImage);
     },
     changeImage: function(img){
-        this.setState({imageURL: img});
+        this.setState({imageURL: img, loading: false});
+    },
+    preloadImage: function(src){
+        this.setState({loading: true});
+        var img = new Image();
+        img.onload = function(){
+            this.changeImage(src);
+        }.bind(this);
+        img.src = src;
     },
     onDragLeave: function(evt){
         this.setState({dragenter: false});
         evt.preventDefault();
     },
     onDragOver: function(evt){
-        this.setState({dragenter: true});
+        if(this.state.dragenter !== true){
+            this.setState({dragenter: true});
+        }
         evt.preventDefault();
     },
     onDrop: function(evt){
@@ -19123,11 +19133,19 @@ var FunBoard = React.createClass({displayName: 'FunBoard',
         var cx = React.addons.classSet;
         var classes = cx({
             'funboard': true,
-            'funboard_dragenter': this.state.dragenter
+            'funboard_dragenter': this.state.dragenter,
+            'funboard_loading': this.state.loading
         });
         return (
             React.DOM.div( {className:classes, onDragOver:this.onDragOver, onDragLeave:this.onDragLeave, onDrop:this.onDrop} , 
-                ImageView( {src:this.state.imageURL} )
+                ImageView( {src:this.state.imageURL} ),
+                React.DOM.div( {className:"spinner"}, 
+                  React.DOM.div( {className:"rect1"}),
+                  React.DOM.div( {className:"rect2"}),
+                  React.DOM.div( {className:"rect3"}),
+                  React.DOM.div( {className:"rect4"}),
+                  React.DOM.div( {className:"rect5"})
+                )
             )
         );
     }
