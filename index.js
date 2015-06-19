@@ -12,7 +12,7 @@ build.run(function(err, stats){
     var host = server.address().address
     var port = server.address().port
 
-    console.log('- ' + package.name + ' app listening at http://%s:%s', host, port);
+    console.log('- %s app listening at http://%s:%s', package.name, host, port);
 
   })
 })

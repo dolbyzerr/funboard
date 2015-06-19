@@ -44,6 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+	/* injects from baggage-loader */
+
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -20437,6 +20440,10 @@
 /* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+	/* injects from baggage-loader */
+	__webpack_require__(158);
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -20455,6 +20462,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _image = __webpack_require__(159);
+
+	var _image2 = _interopRequireDefault(_image);
+
 	var App = (function (_React$Component) {
 	  function App() {
 	    _classCallCheck(this, App);
@@ -20472,7 +20483,7 @@
 	      return _react2['default'].createElement(
 	        'div',
 	        { onClick: this._handleClick },
-	        'Hello world'
+	        _react2['default'].createElement(_image2['default'], null)
 	      );
 	    }
 	  }, {
@@ -20486,10 +20497,61 @@
 	})(_react2['default'].Component);
 
 	exports['default'] = App;
+	module.exports = exports['default'];
 
-	if (typeof window !== 'undefined') {
-	  _react2['default'].render(_react2['default'].createElement(App, null), window.document.getElementById('app'));
-	}
+/***/ },
+/* 158 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/* injects from baggage-loader */
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var Image = (function (_React$Component) {
+	  function Image() {
+	    _classCallCheck(this, Image);
+
+	    if (_React$Component != null) {
+	      _React$Component.apply(this, arguments);
+	    }
+	  }
+
+	  _inherits(Image, _React$Component);
+
+	  _createClass(Image, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('img', { src: 'http://placehold.it/350x150' });
+	    }
+	  }]);
+
+	  return Image;
+	})(_react2['default'].Component);
+
+	exports['default'] = Image;
 	module.exports = exports['default'];
 
 /***/ }
