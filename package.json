@@ -1,22 +1,25 @@
 {
   "name": "funboard",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Fun board",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index",
+    "build": "node index --build"
   },
   "author": "Andrei Terentev",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^1.0.0",
-    "express": "~4.4.3",
-    "socket.io": "~1.0.4"
+    "babel-core": "^5.5.8",
+    "babel-loader": "^5.1.4",
+    "ejs": "^2.3.1",
+    "express": "^4.12.4",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "react": "^0.13.3",
+    "stylus": "^0.51.1"
   },
   "devDependencies": {
-    "browserify": "~4.1.10",
-    "gulp": "~3.8.0",
-    "gulp-browserify": "~0.5.0"
+    "babel": "^5.5.8"
   }
 }
